@@ -38,22 +38,49 @@
             padding-bottom: 20px;
         }
         input, select, textarea, button {
-            padding: 10px;
+            padding: 15px;
             margin: 5px;
             width: 80%;
-            font-size: 16px;
+            font-size: 20px;
             font-family: 'Dancing Script', cursive;
         }
         button {
-            background-color: #28a745;
+            background-color: #b47a06;
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 22px;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #986808;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: url('formulario_background.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            color: black;
+            text-align: center;
+            width: 50%;
         }
     </style>
+    <script>
+        function showPopup(event) {
+            event.preventDefault();
+            document.getElementById('confirmationPopup').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('confirmationPopup').style.display = 'none';
+            }, 3000);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -61,10 +88,10 @@
     </div>
     <div class="form-container">
         <h2>Confirmar Asistencia</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="text" name="nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
-            <select name="asistencia" required>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="showPopup(event)">
+            <input type="text" name="nombre" placeholder="Nombre y Apellido" required oninvalid="this.setCustomValidity('Recordá colocar tu nombre y apellido antes de confirmar.')" oninput="setCustomValidity('')">
+            <input type="email" name="email" placeholder="Tu Correo Electrónico">
+            <select name="asistencia">
                 <option value="Sí, asistiré">Sí, asistiré</option>
                 <option value="No podré asistir">No podré asistir</option>
             </select>
@@ -72,5 +99,6 @@
             <button type="submit">Enviar Confirmación</button>
         </form>
     </div>
+    <div id="confirmationPopup" class="popup">Tu confirmación fue enviada con éxito.</div>
 </body>
 </html>
