@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Casamiento - Dai & Agus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .pdf-image {
+            width: 100%;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        form {
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+        input, select, textarea, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="pdf-image" src="Casamiento_Dai_Agus.png" alt="Invitación de Casamiento">
+    </div>
+    <div class="form-container">
+        <h2>Confirmar Asistencia</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+            <select name="asistencia" required>
+                <option value="Sí, asistiré">Sí, asistiré</option>
+                <option value="No podré asistir">No podré asistir</option>
+            </select>
+            <textarea name="restricciones" placeholder="¿Tienes alguna restricción alimenticia?" rows="3"></textarea>
+            <button type="submit">Enviar Confirmación</button>
+        </form>
+    </div>
+</body>
+</html>
