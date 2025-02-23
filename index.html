@@ -71,6 +71,12 @@
             text-align: center;
             width: 50%;
         }
+        .countdown-container {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #b47a06;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -99,6 +105,21 @@
                     alert("No se pudo enviar la confirmación. Revisa tu conexión e intenta nuevamente.");
                 }
             });
+            
+            function updateCountdown() {
+                const eventDate = new Date("June 6, 2025 20:00:00").getTime();
+                const now = new Date().getTime();
+                const timeLeft = eventDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+            }
+            
+            setInterval(updateCountdown, 1000);
         });
     </script>
 </head>
@@ -110,15 +131,20 @@
         <h2>Confirmar Asistencia</h2>
         <form action="https://formspree.io/f/xyzkapqp" method="post">
             <input type="text" name="nombre" placeholder="Nombre y Apellido" required oninvalid="this.setCustomValidity('Recordá colocar tu nombre y apellido antes de confirmar.')" oninput="setCustomValidity('')">
-                        <select name="asistencia">
+            <select name="asistencia">
                 <option value="Sí, asistiré">Sí, asistiré</option>
                 <option value="No podré asistir">No podré asistir</option>
             </select>
             <textarea name="restricciones" placeholder="¿Tienes alguna restricción alimenticia?" rows="3"></textarea>
             <button type="submit">Enviar Confirmación</button>
         </form>
+        <div class="countdown-container">
+            <p>¡Preparate que faltan...!!!</p>
+            <p id="countdown"></p>
+        </div>
     </div>
     <div id="confirmationPopup" class="popup">Tu confirmación fue enviada con éxito.</div>
 </body>
 </html>
+
 
