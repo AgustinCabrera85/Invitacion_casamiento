@@ -121,7 +121,12 @@
             
             setInterval(updateCountdown, 1000);
         });
-        document.getElementById("background-music").volume = 0.5;
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("background-music");
+            if (audio) {
+                audio.volume = 0.5;
+            }
+        });
     </script>
 </head>
 <body>
