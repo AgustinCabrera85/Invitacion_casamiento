@@ -121,9 +121,13 @@
             
             setInterval(updateCountdown, 1000);
         });
+        document.getElementById("background-music").volume = 0.5;
     </script>
 </head>
 <body>
+    <audio autoplay loop id="background-music">
+        <source src="Tan_enamorados.mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
         <img class="pdf-image" src="Casamiento_Dai_Agus.png" alt="Invitación de Casamiento">
     </div>
