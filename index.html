@@ -121,12 +121,12 @@
             
             setInterval(updateCountdown, 1000);
         });
-        document.addEventListener("DOMContentLoaded", function() {
-            const audio = document.getElementById("background-music");
-            if (audio) {
-                audio.volume = 0.5;
-            }
-        });
+        document.addEventListener("click", function() {
+        const audio = document.getElementById("background-music");
+        if (audio && audio.paused) {
+            audio.play().catch(error => console.log("Error al reproducir el audio:", error));
+        }
+    });
     </script>
 </head>
 <body>
